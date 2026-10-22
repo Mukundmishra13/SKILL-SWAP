@@ -1,0 +1,3 @@
+flet[all]==0.28.3
+# only needed for running as a web app (python -m flet run --web); newer FastAPI breaks flet 0.28
+fastapi==0.115.12
