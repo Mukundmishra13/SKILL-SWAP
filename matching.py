@@ -67,12 +67,15 @@ def find_matches(profiles, user_id, index=None):
         i_teach = teachable(me, other)
         if not they_teach and not i_teach:
             continue
+        # Share of both people's wants that this pairing covers (0..1).
+        wants_total = len(me["wants"]) + len(other["wants"])
         match = {
             "partner_id": uid,
             "partner": other["name"],
             "they_teach": they_teach,
             "i_teach": i_teach,
             "score": len(they_teach) + len(i_teach),
+            "coverage": (len(they_teach) + len(i_teach)) / wants_total if wants_total else 0,
         }
         (swaps if they_teach and i_teach else maybes).append(match)
 

@@ -15,6 +15,12 @@ def test_two_way_swap():
     assert swaps[0]["they_teach"] == ["guitar"] and swaps[0]["i_teach"] == ["python"]
 
 
+def test_coverage():
+    swaps, _ = find_matches(PROFILES, 1)
+    # Asha wants 1 skill, Ben wants 1; both are covered -> 100%.
+    assert swaps[0]["coverage"] == 1.0
+
+
 def test_one_way_is_maybe_not_swap():
     _, maybes = find_matches(PROFILES, 1)
     # Chen can teach Asha guitar, but Asha has nothing Chen wants.
